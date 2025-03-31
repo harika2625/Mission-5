@@ -1,0 +1,19 @@
+{
+  "name": "auctiondata-cli",
+  "version": "1.0.0",
+  "description": "AuctionData Management CLI",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Harika",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^13.1.0",
+    "express": "^5.1.0",
+    "inquirer": "^12.5.0",
+    "jest": "^29.7.0",
+    "mongoose": "^8.13.1",
+    "supertest": "^7.1.0"
+  }
+}
