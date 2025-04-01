@@ -45,21 +45,5 @@ const addProduct = (product) => {
     });
 };
 
-// Delete Product
-// const deleteProduct = async (id) => {
-//   try {
-//     const result = await Product.findByIdAndDelete(id);
-//     if (result) {
-//       console.log(`Product with ID '${id}' deleted successfully!`);
-//     } else {
-//       console.log(`Product with ID '${id}' not found.`);
-//     }
-//     mongoose.connection.close();
-//   } catch (err) {
-//     console.error("Error deleting product:", err);
-//     mongoose.connection.close();
-//   }
-// };
-
 // export methods
 module.exports = { app, server, addProduct };
