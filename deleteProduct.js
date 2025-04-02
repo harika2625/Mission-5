@@ -7,7 +7,7 @@ app.use(express.json());
 // Map global promise - get rid of warning
 mongoose.Promise = global.Promise;
 // connect to db
-mongoose.connect("mongodb://localhost:27017/auction-data", {});
+const db = mongoose.connect("mongodb://localhost:27017/auction-data", {});
 
 // PORT
 const PORT = 3000;

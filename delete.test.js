@@ -4,8 +4,6 @@ const { app, server } = require("./deleteProduct.js");
 const Product = require("./model/product");
 
 describe("DELETE/auction-data/:id", () => {
-  let productId;
-
   afterAll(async () => {
     if (server && server.close) {
       await server.close(); // Close the server
