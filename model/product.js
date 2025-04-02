@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 // Product Schema
-const productSchema = mongoose.Schema({
-  title: { type: string },
-  description: { type: string },
-  start_price: { type: number },
-  reserve_price: { type: number },
+const productSchema = new mongoose.Schema({
+  title: { type: String },
+  description: { type: String },
+  start_price: { type: Number },
+  reserve_price: { type: Number },
 });
 
 // export schema
