@@ -1,22 +1,55 @@
-const { program } = require("commander");
-const {
-  addProduct,
-  // deleteProduct,
-} = require("./index.js"); // Adjust the path to your index.js file
+#!/usr/bin/env node
+const { Command } = require("commander");
+const inquirer = require("inquirer");
+const prompt = inquirer.default; // 👈 Fix here
+const { addProduct } = require("./index");
 
-program.version("1.0.0").description("CLI for managing auction data");
+const program = new Command();
+
+const questions = [
+  {
+    type: "input",
+    name: "title",
+    message: "Product name:",
+  },
+  {
+    type: "input",
+    name: "description",
+    message: "Product description:",
+  },
+  {
+    type: "input",
+    name: "start_price",
+    message: "Start price:",
+  },
+  {
+    type: "input",
+    name: "reserve_price",
+    message: "Reserve price:",
+  },
+];
 
 program
-  .command("add <title> <description> <start_price> <reserve_price>")
+  .name("AuctionData-CLI")
+  .description("CLI for managing auction data")
+  .version("1.0.0");
+
+program
+  .command("add")
   .alias("a")
   .description("Add a new product")
-  .action((title, description, start_price, reserve_price) => {
-    addProduct({
-      title,
-      description,
-      start_price: parseFloat(start_price),
-      reserve_price: parseFloat(reserve_price),
+  .action(() => {
+    inquirer.default.prompt(questions).then((answers) => {
+      addProduct(answers);
     });
   });
-// .option("-d, --delete <id>", "Delete a product by ID")
+program
+  .command("remove <title>")
+  .alias("r")
+  .description("Remove a product by title")
+  .action((title) => {
+    const { removeProduct } = require("./index"); // make sure removeProduct is exported from index.js
+    removeProduct(title);
+  });
+
 program.parse(process.argv);

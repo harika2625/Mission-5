@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Product = require("./model/product.js");
 
 const express = require("express");
+const product = require("./model/product.js");
 const app = express();
 app.use(express.json());
 // Map global promise - get rid of warning
@@ -43,6 +44,18 @@ const addProduct = (product) => {
       mongoose.connection.close(); // Ensure connection closes even if there's an error
     });
 };
-
+// Remove product by title
+const removeProduct = async (title) => {
+  try {
+    const result = await Product.findOneAndDelete({ title });
+    if (result) {
+      console.log(`✅ Product "${title}" removed successfully.`);
+    } else {
+      console.log(`❌ No product found with title "${title}".`);
+    }
+  } catch (error) {
+    console.error("❌ Error removing product:", error);
+  }
+};
 // export methods
-module.exports = { app, server, addProduct };
+module.exports = { app, server, addProduct, removeProduct };

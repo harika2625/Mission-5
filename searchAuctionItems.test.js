@@ -1,9 +1,13 @@
 const request = require("supertest");
 const mongoose = require("mongoose");
 const { app, server } = require("./searchAuctionItems.js");
-const Product = require("./model/product");
+const Product = require("./model/product.js");
 
-describe("GET /auction-data/search", () => {
+describe("GET /auction-data/all", () => {
+  afterAll(async () => {
+    await mongoose.connection.close(); // Close the database connection
+    server.close(); // Stop the server
+  });
   it("should return matching auction items when searched by title", async () => {
     const response = await request(app).get(`/auction-data/search?query=mazda`);
     expect(response.status).toBe(200);

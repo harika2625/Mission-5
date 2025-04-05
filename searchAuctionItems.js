@@ -6,18 +6,12 @@ const app = express();
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose
-  .connect("mongodb://localhost:27017/auction-data", {})
-  .then(async () => {
-    const products = await Product.find({}, "title");
-    console.log("Stored Products in Database:", products);
-    mongoose.connection.close();
-  })
-  .catch((err) => console.error("Error fetching data:", err));
+mongoose.connect("mongodb://localhost:27017/auction-data", {});
 
 // API to fetch all auction items
 app.get("/auction-data/all", async (req, res) => {
   try {
+    console.log("Fetching all products..."); // Debugging
     const allProducts = await Product.find();
     res.status(200).json(allProducts);
   } catch (error) {
@@ -35,7 +29,7 @@ app.get("/auction-data/search", async (req, res) => {
       return res.status(400).json({ error: "Search query is required" });
     }
 
-    console.log("🔍 Received Search Query:", query);
+    console.log("Received Search Query:", query);
 
     const searchResults = await Product.find({
       title: { $regex: new RegExp(query, "i") },
@@ -51,7 +45,7 @@ app.get("/auction-data/search", async (req, res) => {
 
     res.status(200).json(searchResults);
   } catch (error) {
-    console.error("❌ Error fetching auction items:", error);
+    console.error("Error fetching auction items:", error);
     res.status(500).json({ error: "Server error" });
   }
 });

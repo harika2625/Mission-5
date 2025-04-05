@@ -45,6 +45,43 @@ const products = [
     reserve_price: 2000,
   },
 ];
+[
+  {
+    title: "Vintage Car",
+    description:
+      "A rare 1960s model in excellent condition, perfect for collectors.",
+    start_price: 5000,
+    reserve_price: 8000,
+  },
+  {
+    title: "Mountain Bike",
+    description:
+      "A durable and lightweight mountain bike, great for outdoor adventures.",
+    start_price: 300,
+    reserve_price: 500,
+  },
+  {
+    title: "Antique Vase",
+    description:
+      "A beautiful 19th-century porcelain vase, hand-painted and in pristine condition.",
+    start_price: 1200,
+    reserve_price: 2000,
+  },
+  {
+    title: "Smartphone",
+    description:
+      "Latest model with all the top features, including a high-resolution camera and fast processor.",
+    start_price: 700,
+    reserve_price: 1000,
+  },
+  {
+    title: "Designer Watch",
+    description:
+      "Luxury watch from a well-known designer brand, minimal wear and tear.",
+    start_price: 1500,
+    reserve_price: 2500,
+  },
+];
 
 // Function to Seed Data
 const seedProducts = async () => {

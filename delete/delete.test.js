@@ -1,7 +1,7 @@
 const request = require("supertest");
 const mongoose = require("mongoose");
 const { app, server } = require("./deleteProduct.js");
-const Product = require("./model/product");
+const Product = require("../model/product.js");
 
 describe("DELETE/auction-data/:id", () => {
   afterAll(async () => {
