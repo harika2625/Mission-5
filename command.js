@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const { Command } = require("commander");
 const inquirer = require("inquirer");
-const prompt = inquirer.default; // 👈 Fix here
+const prompt = inquirer.default; 
 const { addProduct } = require("./index");
 
 const program = new Command();
