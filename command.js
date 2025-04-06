@@ -2,6 +2,9 @@
 const { Command } = require("commander");
 const inquirer = require("inquirer");
 
+
+
+
 const { addProduct } = require("./index");
 
 const program = new Command();
