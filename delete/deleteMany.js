@@ -7,7 +7,7 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Function to deleteMany
+// Function to delete similar name products
 // const deleteSameProducts = async () => {
 //   try {
 //     await Product.deleteMany({ title: /Samsung/i }); // Deletes all products with "Samsung" in the title (case-insensitive)
