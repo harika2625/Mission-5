@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const { Command } = require("commander");
 const inquirer = require("inquirer");
-const prompt = inquirer.default; // 👈 Fix here
+
 const { addProduct } = require("./index");
 
 const program = new Command();
@@ -28,6 +28,13 @@ const questions = [
     message: "Reserve price:",
   },
 ];
+const removeQuestions = [
+  {
+    type: "input",
+    name: "title",
+    message: "Enter the product title to remove:",
+  },
+];
 
 program
   .name("AuctionData-CLI")
@@ -44,12 +51,14 @@ program
     });
   });
 program
-  .command("remove <title>")
+  .command("remove")
   .alias("r")
   .description("Remove a product by title")
-  .action((title) => {
-    const { removeProduct } = require("./index"); // make sure removeProduct is exported from index.js
-    removeProduct(title);
+  .action(() => {
+    const { removeProduct } = require("./index");
+    inquirer.default.prompt(removeQuestions).then((answers) => {
+      removeProduct(answers.title);
+    });
   });
 
 program.parse(process.argv);
